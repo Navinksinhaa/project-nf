@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-provider "aws" {
-  region = var.aws_region
-}
-
 module "vpc" {
   source              = "../../modules/vpc"
   name                = "pharma-lab-vpc-dev"
