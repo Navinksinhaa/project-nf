@@ -4,7 +4,7 @@ module "eks" {
   cluster_version = "1.28"
   vpc_id          = var.vpc_id
   subnet_ids      = var.subnet_ids
-
+  enabled_cluster_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
   node_groups = {
     default = {
       desired_capacity = var.desired_capacity
