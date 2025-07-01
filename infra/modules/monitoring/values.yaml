@@ -1,0 +1,25 @@
+grafana:
+  adminPassword: "pharmaLabSecure123"
+  service:
+    type: LoadBalancer
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+
+# Additional scrape configs example
+additionalScrapeConfigs:
+  - job_name: 'urp'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['urp.default.svc.cluster.local:3000']
+
+  - job_name: 'alex'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['alex.default.svc.cluster.local:3000']
+
+  - job_name: 'raven'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['raven.default.svc.cluster.local:3000']
