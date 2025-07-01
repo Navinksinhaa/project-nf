@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: URP
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: URP
+  template:
+    metadata:
+      labels:
+        app: URP
+    spec:
+      containers:
+        - name: URP
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: URP-secrets
