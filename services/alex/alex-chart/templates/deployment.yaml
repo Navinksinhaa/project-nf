@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ALEX
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: ALEX
+  template:
+    metadata:
+      labels:
+        app: ALEX
+    spec:
+      containers:
+        - name: ALEX
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: ALEX-secrets
