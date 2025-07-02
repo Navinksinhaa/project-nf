@@ -1,5 +1,0 @@
-apiVersion: v2
-name: alex-chart
-description: A Helm chart for ALEX service
-version: 0.1.0
-appVersion: "1.0"
