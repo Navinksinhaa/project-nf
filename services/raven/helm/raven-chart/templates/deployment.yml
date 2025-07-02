@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RAVEN
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: RAVEN
+  template:
+    metadata:
+      labels:
+        app: RAVEN
+    spec:
+      containers:
+        - name: RAVEN
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: RAVEN-secrets
